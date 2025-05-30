@@ -1,19 +1,19 @@
 {
-    "layer": "top",
+    "layer": "bottom",
     "position": "top",
-    "height": 30,
+    "height": 34,
     "modules-left": ["sway/workspaces"],
     "modules-center": ["sway/window"],
     "modules-right": ["battery", "network", "clock"],
-    
+
     "battery": {
         "format": "{capacity}%",
         "interval": 10
     },
-    
+
     "clock": {
         "format": "{:%H:%M}"
     },
 
-    "style": "~/.config/waybar/style.css"
+    "style": "style.css"
 }

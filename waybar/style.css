@@ -1,15 +1,23 @@
 * {
     font-family: "Fira Code", "Font Awesome", sans-serif;
-    font-size: 14px;
-    background: darkgrey;
+    font-size: 18px;
+    background: lightslategray;
 }
 
 #battery {
     color: #ffffff;
     background: #2e3440;
-    padding: 0 4px;
+    padding: 0 10px;
 }
 
 #clock {
-    color: #88c0d0;
+    color: #ffffff;
+    background: #2e3440;
+    padding: 0 10px;
+}
+
+#network {
+    color: #ffffff;
+    background: #2e3440;
+    padding: 0 20px;
 }
