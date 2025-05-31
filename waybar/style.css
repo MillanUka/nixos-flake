@@ -1,23 +1,22 @@
 * {
     font-family: "Fira Code", "Font Awesome", sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     background: lightslategray;
 }
 
-#battery {
-    color: #ffffff;
-    background: #2e3440;
-    padding: 0 10px;
+#workspaces {
+    padding: 5px;
 }
 
-#clock {
+#workspaces button {
     color: #ffffff;
-    background: #2e3440;
-    padding: 0 10px;
+    background: transparent;
 }
 
+#battery,
+#clock,
 #network {
     color: #ffffff;
     background: #2e3440;
-    padding: 0 20px;
+    padding: 0 10px;
 }
