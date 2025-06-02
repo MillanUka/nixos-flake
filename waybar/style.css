@@ -15,7 +15,8 @@
 
 #battery,
 #clock,
-#network {
+#network,
+#pulseaudio {
     color: #ffffff;
     background: #2e3440;
     padding: 0 10px;
