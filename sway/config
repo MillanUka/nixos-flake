@@ -1,5 +1,4 @@
 # Default config for sway
-#
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
@@ -196,3 +195,13 @@ bindsym $mod+r mode "resize"
 include /etc/sway/config.d/*
 
 exec waybar
+
+# Volume settings
+# Volume Up 
+bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
+
+# Volume Down 
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+
+# Toggle Mute 
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
