@@ -1,11 +1,16 @@
 { config, pkgs, ... }:
 
 {
+
+  imports = [
+    ./home/config.nix
+  ];
+
   home.username = "millanu";
   home.homeDirectory = "/home/millanu";
   home.stateVersion = "25.05";
 
-  programs.home-manager.enable = true; 
+  programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
     wget
