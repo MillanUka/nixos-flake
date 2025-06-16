@@ -1,4 +1,2 @@
-# Dotfiles
-this hosts my NixOS, Hyprland and Waybar configuration
-
-Waybar config is based of this <a href="https://github.com/mubin6th/MinimalSway/tree/main/waybar">config</a>
+# NixOS flake
+This hosts my NixOS flake configuration, which inclues my packages, as well as my various program configurations.
