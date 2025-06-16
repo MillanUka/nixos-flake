@@ -3,7 +3,7 @@
 {
 
   imports = [
-    ./home/config.nix
+    ./config.nix
   ];
 
   home.username = "millanu";
