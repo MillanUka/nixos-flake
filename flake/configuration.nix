@@ -11,6 +11,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  hardware.enableAllFirmware = true;
+
   # Enable network manager applet
   programs.nm-applet.enable = true;
 
