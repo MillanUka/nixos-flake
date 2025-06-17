@@ -26,6 +26,7 @@
     feh
     git
     waybar
+    nil
   ];
 
 }

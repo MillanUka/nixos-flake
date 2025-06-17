@@ -65,6 +65,8 @@
 
   programs.hyprland.enable = true;
 
+  programs.kdeconnect.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
