@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ lib, pkgs, ... }: {
   imports = [ ./hardware-configuration.nix ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -69,6 +69,20 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "steam"
+    "steam-original"
+    "steam-unwrapped"
+    "steam-run"
+  ];
 
   users.users.millanu = {
     isNormalUser = true;
