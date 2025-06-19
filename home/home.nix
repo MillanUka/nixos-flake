@@ -13,7 +13,6 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    wget
     alacritty
     wofi
     cargo
@@ -21,10 +20,6 @@
     go
     zellij
     calibre
-    unzip
-    helix
-    feh
-    git
     waybar
     nil
   ];
