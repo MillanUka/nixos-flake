@@ -1,6 +1,6 @@
 {
   home.file = {
-    ".config/helix".source = ./helix;
-    ".config/zellij".source = ./zellij;
+    ".config/helix".source = ../../common/helix;
+    ".config/zellij".source = ../../common/zellij;
   };
 }
