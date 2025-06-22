@@ -1,2 +1,2 @@
 # NixOS flake
-This hosts my NixOS flake configuration, which inclues my packages, as well as my various program configurations.
+Contains my NixOS configuration for my personal machine and my home server

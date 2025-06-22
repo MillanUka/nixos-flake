@@ -15,8 +15,6 @@
   home.packages = with pkgs; [
     alacritty
     zellij
-    nil
-    qbittorrent-nox
   ];
 
 }

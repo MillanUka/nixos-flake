@@ -54,9 +54,6 @@
     pulse.enable = true;
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   services.jellyfin.enable = true;
 
   # Allow unfree packages
