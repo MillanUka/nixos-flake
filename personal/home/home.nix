@@ -15,9 +15,9 @@
   home.packages = with pkgs; [
     alacritty
     wofi
-    cargo
-    rustc
     go
+    gopls
+    rustup
     zellij
     calibre
     waybar

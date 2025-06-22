@@ -1,9 +1,17 @@
+[[language]]
+name = "nix"
+language-servers = ["nil"]
+roots = ["flake.nix", "default.nix", "shell.nix"]
+
 [language-server.nil]
 command = "nil"
 args = ["--stdio"]
 
 [[language]]
-name = "nix"
-language-servers = ["nil"]
-roots = ["flake.nix", "default.nix", "shell.nix"]
+name = "go"
+language-servers = ["gopls"]
+formatter = { command = "gofmt" }
+
+[language-server.gopls]
+command = "gopls"
 
