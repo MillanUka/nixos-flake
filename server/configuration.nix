@@ -92,11 +92,11 @@
     enable = true;
 
     virtualHosts."millanuka.com" = {
-      root = "/home/millanu/website";
+      root = "/var/www/millanuka.com";
     };
 
     virtualHosts."www.millanuka.com" = {
-      globalRedirect = "https://millanuka.com";
+      globalRedirect = "http://millanuka.com";
     };
   };
 
