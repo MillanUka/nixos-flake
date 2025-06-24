@@ -95,11 +95,6 @@
       enableACME = true;
       forceSSL = true;
       root = "/home/millanu/website";
-      locations."/" = {
-        extraConfig = ''
-        index index.html
-        '';
-      };
     };
 
     virtualHosts."www.millanuka.com" = {
@@ -109,14 +104,8 @@
     };
   };
 
-  security.acme = {
-    acceptTerms = true;
-    email = "ukamillan@gmail.com";
-  };
-
-
   services.openssh.enable = true;
-  networking.firewall.allowedTCPPorts = [ 8080 80 ];
+  networking.firewall.allowedTCPPorts = [ 8080 80 443 ];
 
   system.stateVersion = "25.05";
 }
