@@ -15,3 +15,17 @@ formatter = { command = "gofmt" }
 [language-server.gopls]
 command = "gopls"
 
+[[language]]
+name = "typescript"
+language-servers = ["typescript-language-server"]
+formatter = { command = "prettier", args = ["--stdin-filepath", "{}"] }
+
+[[language]]
+name = "tsx"
+language-servers = ["typescript-language-server"]
+formatter = { command = "prettier", args = ["--stdin-filepath", "{}"] }
+
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+

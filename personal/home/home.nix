@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
 
@@ -22,6 +22,10 @@
     calibre
     waybar
     nil
+    nodejs_24
+    typescript
+    typescript-language-server
+    nodePackages.prettier
   ];
 
 }
