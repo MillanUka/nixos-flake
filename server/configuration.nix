@@ -88,18 +88,14 @@
     };
   };
 
-    services.nginx = {
+  services.nginx = {
     enable = true;
 
     virtualHosts."millanuka.com" = {
-      enableACME = true;
-      forceSSL = true;
       root = "/home/millanu/website";
     };
 
     virtualHosts."www.millanuka.com" = {
-      enableACME = true;
-      forceSSL = true;
       globalRedirect = "https://millanuka.com";
     };
   };
