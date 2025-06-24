@@ -91,14 +91,27 @@
     services.nginx = {
     enable = true;
 
-    virtualHosts."mydomain.local" = {
+    virtualHosts."millanuka.com" = {
+      enableACME = true;
+      forceSSL = true;
       root = "/home/millanu/website";
       locations."/" = {
         extraConfig = ''
-          autoindex on;
+        index index.html
         '';
       };
     };
+
+    virtualHosts."www.millanuka.com" = {
+      enableACME = true;
+      forceSSL = true;
+      globalRedirect = "https://millanuka.com";
+    };
+  };
+
+  security.acme = {
+    acceptTerms = true;
+    email = "ukamillan@gmail.com";
   };
 
 
