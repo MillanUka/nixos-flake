@@ -88,9 +88,22 @@
     };
   };
 
+    services.nginx = {
+    enable = true;
+
+    virtualHosts."mydomain.local" = {
+      root = "/home/millanu/website";
+      locations."/" = {
+        extraConfig = ''
+          autoindex on;
+        '';
+      };
+    };
+  };
+
 
   services.openssh.enable = true;
-  networking.firewall.allowedTCPPorts = [ 8080 ];
+  networking.firewall.allowedTCPPorts = [ 8080 80 ];
 
   system.stateVersion = "25.05";
 }
