@@ -12,10 +12,7 @@
 
   programs.home-manager.enable = true;
 
-  home.packages = with pkgs; [
-    alacritty
-    zellij
-  ];
+  home.packages = with pkgs; [ zellij ];
 
 }
 

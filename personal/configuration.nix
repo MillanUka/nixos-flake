@@ -89,7 +89,7 @@
     extraGroups = [ "wheel" "networkmanager" ];
   };
 
-  environment.systemPackages = with pkgs; [ git helix jujutsu];
+  environment.systemPackages = with pkgs; [ git helix jujutsu ghostty];
 
   services.openssh.enable = true;
 

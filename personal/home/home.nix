@@ -13,7 +13,6 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    alacritty
     wofi
     go
     gopls
