@@ -13,7 +13,8 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    wofi
+    fuzzel
+    swaylock
     go
     gopls
     rustup

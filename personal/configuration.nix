@@ -37,16 +37,17 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the LXQT Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.lxqt.enable = true;
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "nz";
     variant = "";
   };
 
+  services.greetd.enable = true;
+  services.greetd.settings.default_session = {
+    command = "tuigreet --cmd niri";
+    user = "millanu";
+  };
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -63,33 +64,21 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  programs.hyprland.enable = true;
+  programs.niri= {
+    enable = true;
+  };
 
   programs.kdeconnect.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-  };
-
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "steam"
-    "steam-original"
-    "steam-unwrapped"
-    "steam-run"
-  ];
-
   users.users.millanu = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
   };
 
-  environment.systemPackages = with pkgs; [ git helix jujutsu ghostty];
+  environment.systemPackages = with pkgs; [ git helix jujutsu ghostty greetd.tuigreet];
 
   services.openssh.enable = true;
 
