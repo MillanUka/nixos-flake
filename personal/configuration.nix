@@ -43,11 +43,8 @@
     variant = "";
   };
 
-  services.greetd.enable = true;
-  services.greetd.settings.default_session = {
-    command = "tuigreet --cmd niri";
-    user = "millanu";
-  };
+  services.displayManager.ly.enable = true;
+ 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
