@@ -65,6 +65,7 @@
   users.users.millanu = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
+    shell = pkgs.nushell;
   };
 
 
@@ -76,6 +77,7 @@
     pkgs.jellyfin-ffmpeg
     cloudflared
     qbittorrent-nox
+    nushell
   ];
 
   services.cloudflared = {

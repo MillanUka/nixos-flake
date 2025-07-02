@@ -26,7 +26,6 @@
     typescript
     typescript-language-server
     nodePackages.prettier
-    discord
   ];
 
 }
