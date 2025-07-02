@@ -73,9 +73,10 @@
   users.users.millanu = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
+    shell = pkgs.nushell;
   };
 
-  environment.systemPackages = with pkgs; [ git helix jujutsu ghostty greetd.tuigreet];
+  environment.systemPackages = with pkgs; [ git helix jujutsu ghostty nushell];
 
   services.openssh.enable = true;
 
