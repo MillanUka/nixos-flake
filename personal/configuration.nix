@@ -11,6 +11,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+    
   hardware.enableAllFirmware = true;
 
   # Enable network manager applet
@@ -60,6 +63,8 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  programs.java.enable = true;
 
   programs.niri= {
     enable = true;
