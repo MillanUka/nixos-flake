@@ -1,7 +1,9 @@
 theme = "rose_pine_moon"
 [editor]
+auto-save = true
+cursorline = true
+gutters =["diagnostics", "line-numbers"]
 line-number = "absolute"
-mouse = false
 
 [editor.cursor-shape]
 insert = "bar"
@@ -9,5 +11,5 @@ normal = "block"
 select = "underline"
 
 [editor.file-picker]
-hidden = false
+hidden = true
 
