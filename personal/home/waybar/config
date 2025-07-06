@@ -9,7 +9,7 @@
     "margin-left": 8,
 
     "modules-left": [
-        "hyprland/workspaces"
+        "niri/workspaces"
     ],
 
     "modules-center": [
@@ -26,9 +26,8 @@
         "pulseaudio"
     ],
 
-    "hyprland/workspaces": {
+    "niri/workspaces": {
         "disable-scroll": true,
-        "all-outputs": true,
         "tooltip": false
     },
 
