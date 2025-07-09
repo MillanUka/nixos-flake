@@ -19,6 +19,12 @@
   # Enable network manager applet
   programs.nm-applet.enable = true;
 
+
+  programs.steam.enable = true;
+  hardware.opengl.enable = true;
+  hardware.opengl.driSupport32Bit = true;
+  services.xserver.videoDrivers = [ "intel" ]; # or your GPU
+
   # Set your time zone.
   time.timeZone = "Pacific/Auckland";
 

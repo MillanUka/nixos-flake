@@ -4,6 +4,7 @@
 
   imports = [
     ./config.nix
+    ./waybar.nix
   ];
 
   home.username = "millanu";
@@ -26,6 +27,7 @@
     typescript
     typescript-language-server
     nodePackages.prettier
+    steam
   ];
 
 }
