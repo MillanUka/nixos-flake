@@ -28,6 +28,7 @@
     typescript-language-server
     nodePackages.prettier
     steam
+    krita
   ];
 
 }

@@ -76,6 +76,10 @@
     enable = true;
   };
 
+  services.xserver.desktopManager.gnome.enable = true;
+
+  services.gnome.core-apps.enable = false;
+
   programs.kdeconnect.enable = true;
 
   # Allow unfree packages
