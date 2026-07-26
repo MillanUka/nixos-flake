@@ -133,6 +133,11 @@
     };
   };
 
+  systemd.tmpfiles.rules = [
+    "d /media/tvshows 0775 millanu sonarr - -"
+    "d /media/movies 0775 millanu radarr - -"
+  ];
+
   services.openssh.enable = true;
   networking.firewall.allowedTCPPorts = [ 8080 80 443 9696 7878 ];
 
