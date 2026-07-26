@@ -71,6 +71,10 @@
     openFirewall = true;
   };
 
+  services.flaresolverr = {
+    enable = true;
+  };
+
   systemd.services.qbittorrent = {
     description = "qBittorrent headless";
     after = [ "network.target" ];
