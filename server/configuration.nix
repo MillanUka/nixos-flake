@@ -56,6 +56,33 @@
 
   services.jellyfin.enable = true;
 
+  services.sonarr = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  services.radarr = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  services.prowlarr = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  systemd.services.qbittorrent = {
+    description = "qBittorrent headless";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "simple";
+      User = "millanu";
+      ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox --webui-port=8080";
+      Restart = "on-failure";
+    };
+  };
+
   programs.kdeconnect.enable = true;
 
 
@@ -64,7 +91,7 @@
 
   users.users.millanu = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "sonarr" "radarr" ];
     shell = pkgs.nushell;
   };
 
@@ -103,7 +130,7 @@
   };
 
   services.openssh.enable = true;
-  networking.firewall.allowedTCPPorts = [ 8080 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 8080 80 443 9696 7878 ];
 
   system.stateVersion = "25.05";
 }
