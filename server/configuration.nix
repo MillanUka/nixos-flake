@@ -104,6 +104,7 @@
 
   users.users.sonarr.extraGroups = [ "media" ];
   users.users.radarr.extraGroups = [ "media" ];
+  users.users.jellyfin.extraGroups = [ "media" ];
 
 
   environment.systemPackages = with pkgs; [
@@ -146,7 +147,7 @@
   ];
 
   services.openssh.enable = true;
-  networking.firewall.allowedTCPPorts = [ 8080 80 443 9696 7878 ];
+  networking.firewall.allowedTCPPorts = [ 8080 80 443 9696 7878 8096 ];
 
   system.stateVersion = "25.05";
 }
