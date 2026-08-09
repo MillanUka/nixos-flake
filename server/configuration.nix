@@ -82,6 +82,7 @@
     serviceConfig = {
       Type = "simple";
       User = "millanu";
+      UMask = "0002";
       ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox --webui-port=8080";
       Restart = "on-failure";
     };
@@ -93,11 +94,16 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  users.groups.media = {};
+
   users.users.millanu = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "sonarr" "radarr" ];
+    extraGroups = [ "wheel" "networkmanager" "sonarr" "radarr" "media" ];
     shell = pkgs.nushell;
   };
+
+  users.users.sonarr.extraGroups = [ "media" ];
+  users.users.radarr.extraGroups = [ "media" ];
 
 
   environment.systemPackages = with pkgs; [
@@ -134,8 +140,9 @@
   };
 
   systemd.tmpfiles.rules = [
-    "d /media/tvshows 0775 millanu sonarr - -"
-    "d /media/movies 0775 millanu radarr - -"
+    "d /media/downloads 2770 millanu media - -"
+    "d /media/tvshows 0775 millanu media - -"
+    "d /media/movies 0775 millanu media - -"
   ];
 
   services.openssh.enable = true;
