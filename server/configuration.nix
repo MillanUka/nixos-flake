@@ -1,15 +1,17 @@
 { pkgs, ... }:
 let
   jellyfinCss = '':root {
-      --nf-accent: #E50914;
-      --nf-accent-text: #FF4A5A;
+      /* high-contrast dark palette */
+      --nf-accent: #E50914;        /* fills: white on this = 5.9:1 (AA) */
+      --nf-accent-text: #FF4A5A;   /* red as text/underline: 5.2:1 (AA) */
       --nf-accent-hover: #FF1830;
-      --nf-bg: #141414;
-      --nf-surface: #1C1C1C;
-      --nf-surface-2: #242424;
-      --nf-border: #2C2C2C;
-      --nf-text: #F5F5F5;
-      --nf-text-2: #A6A6A6;
+      --nf-bg: #101010;            /* near-black base */
+      --nf-surface: #1A1A1A;
+      --nf-surface-2: #232323;
+      --nf-border: #3A3A3A;        /* visible borders, not just color */
+      --nf-text: #FFFFFF;          /* 19.7:1 on bg */
+      --nf-text-2: #C9C9C9;        /* 11:1 on bg (AA/AAA) */
+      --nf-focus: #FFFFFF;
       --nf-font: 'Helvetica Neue', 'Segoe UI', Roboto, Arial, sans-serif;
     }
 
@@ -25,17 +27,18 @@ let
       background-color: var(--nf-bg) !important;
     }
     .backgroundContainer.withBackdrop {
-      background-color: rgba(0,0,0,0.82) !important;
+      background-color: rgba(0,0,0,0.85) !important;
     }
 
     /* top bar */
     .skinHeader, .skinHeader-withBackground, .skinHeader.semiTransparent {
       background-color: var(--nf-surface) !important;
       color: var(--nf-text) !important;
+      border-bottom: 1px solid var(--nf-border);
       backdrop-filter: none !important;
     }
 
-    /* base text readability */
+    /* text: high-contrast */
     .skinHeader, .paper-icon-button-light, .emby-button, .checkboxLabel,
     .paperListLabel, .listItem, .inputLabel, .fieldDescription {
       color: var(--nf-text) !important;
@@ -45,84 +48,95 @@ let
       color: var(--nf-text-2) !important;
     }
 
-    /* accent red as text/ink — #FF4A5A (>=4.5:1 on dark) */
-    .paper-icon-button-light:hover:not(:disabled),
-    .paper-icon-button-light:active:not(:disabled),
-    .emby-tab-button-active,
-    .emby-tab-button.show-focus:focus,
-    .emby-tab-button:hover,
-    .button-flat:hover, .button-link,
-    .alphaPickerButton-tv:focus,
-    .guide-date-tab-button.emby-tab-button-active,
-    .guide-date-tab-button:focus,
+    /* global keyboard focus: white ring, never color-only */
+    :focus, .emby-button:focus, .paper-icon-button-light:focus,
+    .emby-tab-button:focus, .card:focus, .listItem:focus, .navMenuOption:focus {
+      outline: 3px solid var(--nf-focus) !important;
+      outline-offset: 2px !important;
+    }
+
+    /* accent interactions: ALWAYS paired with a shape/border cue */
+    .button-link, .button-flat:hover {
+      color: var(--nf-accent-text) !important;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .emby-tab-button-active {
+      color: var(--nf-accent-text) !important;
+      font-weight: 700;
+      border-bottom: 3px solid var(--nf-accent-text);
+    }
+    .emby-tab-button:hover, .emby-tab-button.show-focus:focus,
+    .paper-icon-button-light:hover:not(:disabled) {
+      color: var(--nf-accent-text) !important;
+    }
+    .navMenuOption-selected {
+      background-color: var(--nf-accent) !important;
+      color: #FFFFFF !important;
+      font-weight: 700;
+      border-left: 4px solid var(--nf-accent-hover);
+    }
     .buttonActive, .metadataSidebarIcon, .upNextDialog-countdownText,
     .inputLabelFocused, .selectLabelFocused, .textareaLabelFocused {
       color: var(--nf-accent-text) !important;
     }
 
-    /* accent red as fill — #E50914 with white text (5.8:1, AA) */
+    /* accent fills (white text 5.9:1, AA) */
     .fab, .raised, .button-submit, .emby-button.detailFloatingButton,
-    .navMenuOption-selected, .selectionCommandsPanel, .itemProgressBarForeground,
+    .selectionCommandsPanel, .itemProgressBarForeground,
     .countIndicator, .fullSyncIndicator, .mediaSourceIndicator, .playedIndicator,
     .alphaPickerButton-tv:focus,
     .emby-checkbox:checked + span + .checkboxOutline,
     .guide-channelHeaderCell:focus, .programCell:focus,
     .emby-select-tv-withcolor:focus {
       background-color: var(--nf-accent) !important;
+      color: #FFFFFF !important;
     }
     .button-submit:focus, .emby-button.detailFloatingButton:hover,
     .fab:focus, .raised:focus {
       background-color: var(--nf-accent-hover) !important;
     }
-    .itemSelectionPanel { border-color: var(--nf-accent) !important; }
+    .itemSelectionPanel { border: 2px solid var(--nf-accent) !important; }
 
-    /* focus visibility */
-    .emby-button.show-focus:focus,
-    .paper-icon-button-light.show-focus:focus,
-    .emby-tab-button.show-focus:focus {
-      outline: 2px solid var(--nf-text);
-      outline-offset: 1px;
-    }
+    /* checkboxes: checked shows checkmark shape, not color-only */
+    .checkboxOutline { border: 2px solid var(--nf-text-2) !important; }
 
-    /* inputs */
+    /* inputs: visible border + focus ring */
     .emby-input, .emby-textarea, .emby-select-withcolor {
       background: var(--nf-surface-2) !important;
       color: var(--nf-text) !important;
-      border: 1px solid var(--nf-border) !important;
+      border: 2px solid var(--nf-border) !important;
       border-radius: 6px !important;
     }
     .emby-input:focus, .emby-textarea:focus, .emby-select-withcolor:focus {
-      border-color: var(--nf-accent-text) !important;
-      box-shadow: 0 0 0 2px rgba(255,74,90,.35);
+      border-color: var(--nf-focus) !important;
+      box-shadow: 0 0 0 2px rgba(255,255,255,.5);
     }
-    .emby-select-withcolor > option {
-      background: var(--nf-surface-2) !important;
-    }
+    .emby-select-withcolor > option { background: var(--nf-surface-2) !important; }
 
-    /* cards */
-    .card {
-      border-radius: 10px;
-      transition: transform .2s ease;
-    }
-    .card:hover { transform: translateY(-3px); }
+    /* cards: border + focus ring */
+    .card { border-radius: 10px; transition: transform .2s ease; }
     .cardBox, .cardScalable, .cardImage { border-radius: 10px; }
     .visualCardBox {
       background-color: var(--nf-surface) !important;
       border-radius: 10px !important;
+      border: 1px solid var(--nf-border);
     }
     .card:focus .cardBox.visualCardBox,
     .card:focus .cardBox:not(.visualCardBox) .cardScalable {
-      border-color: var(--nf-accent-text) !important;
-      box-shadow: 0 0 0 2px rgba(255,74,90,.45);
+      outline: 3px solid var(--nf-focus) !important;
+      outline-offset: 2px !important;
     }
 
-    /* panels / overlays */
+    /* panels / lists */
     .paperList, .formDialogHeader, .formDialogFooter, .collapseContent,
     .appfooter, .playlistSectionButton, .toast {
       background-color: var(--nf-surface) !important;
       color: var(--nf-text) !important;
+      border: 1px solid var(--nf-border);
     }
     .toast { border-radius: 8px !important; }
+    .listItem { border-bottom: 1px solid var(--nf-border) !important; }
     .listItem:hover, .listItem:focus, .navMenuOption:hover {
       background-color: var(--nf-surface-2) !important;
     }
@@ -131,17 +145,28 @@ let
     .progressring-spiner { border-color: var(--nf-accent-text) !important; }
 
     /* scrollbar */
-    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar { width: 12px; height: 12px; }
     ::-webkit-scrollbar-track { background: var(--nf-bg); }
-    ::-webkit-scrollbar-thumb { background: #3A3A3A; border-radius: 5px; }
+    ::-webkit-scrollbar-thumb { background: var(--nf-surface-2); border: 2px solid var(--nf-border); }
     ::-webkit-scrollbar-thumb:hover { background: var(--nf-accent); }
 
-    /* reduced motion */
+    /* reduced motion: kills ALL animation/transition */
     @media (prefers-reduced-motion: reduce) {
-      .card, .emby-button, .paper-icon-button-light, .listItem, .navMenuOption {
-        transition: none !important;
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
       }
       .card:hover { transform: none !important; }
+    }
+
+    /* larger tap targets for touch/coarse pointers */
+    @media (pointer: coarse) {
+      .emby-button, .paper-icon-button-light, .cardOverlayButton {
+        min-height: 44px;
+        min-width: 44px;
+      }
     }  '';
 
   jellyfinCssFile = pkgs.writeText "jellyfin-custom.css" jellyfinCss;
