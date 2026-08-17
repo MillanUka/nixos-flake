@@ -1,25 +1,28 @@
 { pkgs, ... }:
 let
   jellyfinCss = '':root {
-      --nf-accent: #e50914;
+      --nf-accent: #E50914;
+      --nf-accent-text: #FF4A5A;
+      --nf-accent-hover: #FF1830;
       --nf-bg: #141414;
-      --nf-bg-solid: #0f0f0f;
-      --nf-fg: #e5e5e5;
-      --nf-fg-dim: #8c8c8c;
+      --nf-surface: #1C1C1C;
+      --nf-surface-2: #242424;
+      --nf-border: #2C2C2C;
+      --nf-text: #F5F5F5;
+      --nf-text-2: #A6A6A6;
       --nf-font: 'Helvetica Neue', 'Segoe UI', Roboto, Arial, sans-serif;
     }
 
     html, body {
       font-family: var(--nf-font);
-      background-color: var(--nf-bg-solid);
-      color: var(--nf-fg);
+      background-color: var(--nf-bg);
+      color: var(--nf-text);
     }
 
-    /* backgrounds */
+    /* surfaces */
     .backgroundContainer, .dialog, .mainDrawer, .drawer-open,
-    .noBackdropTransparency .detailPageSecondaryContainer,
-    .wizardStartForm {
-      background-color: var(--nf-bg-solid) !important;
+    .noBackdropTransparency .detailPageSecondaryContainer, .wizardStartForm {
+      background-color: var(--nf-bg) !important;
     }
     .backgroundContainer.withBackdrop {
       background-color: rgba(0,0,0,0.82) !important;
@@ -27,34 +30,39 @@ let
 
     /* top bar */
     .skinHeader, .skinHeader-withBackground, .skinHeader.semiTransparent {
-      background-color: #1a1a1a !important;
-      color: var(--nf-fg) !important;
+      background-color: var(--nf-surface) !important;
+      color: var(--nf-text) !important;
       backdrop-filter: none !important;
     }
 
-    /* accent: blue -> Netflix red */
+    /* base text readability */
+    .skinHeader, .paper-icon-button-light, .emby-button, .checkboxLabel,
+    .paperListLabel, .listItem, .inputLabel, .fieldDescription {
+      color: var(--nf-text) !important;
+    }
+    .cardText-secondary, .secondaryText, .programSecondaryTitle,
+    .emby-tab-button, .navMenuOption, .inputLabelUnfocused, .textareaLabelUnfocused {
+      color: var(--nf-text-2) !important;
+    }
+
+    /* accent red as text/ink — #FF4A5A (>=4.5:1 on dark) */
     .paper-icon-button-light:hover:not(:disabled),
     .paper-icon-button-light:active:not(:disabled),
-    .paper-icon-button-light.show-focus:focus,
-    .emby-button.show-focus:focus,
     .emby-tab-button-active,
     .emby-tab-button.show-focus:focus,
     .emby-tab-button:hover,
     .button-flat:hover, .button-link,
-    .navMenuOption-selected,
     .alphaPickerButton-tv:focus,
     .guide-date-tab-button.emby-tab-button-active,
-    .buttonActive,
-    .metadataSidebarIcon,
-    .upNextDialog-countdownText {
-      color: var(--nf-accent) !important;
+    .guide-date-tab-button:focus,
+    .buttonActive, .metadataSidebarIcon, .upNextDialog-countdownText,
+    .inputLabelFocused, .selectLabelFocused, .textareaLabelFocused {
+      color: var(--nf-accent-text) !important;
     }
 
-    .fab, .raised, .button-submit,
-    .emby-button.detailFloatingButton,
-    .navMenuOption-selected,
-    .selectionCommandsPanel,
-    .itemProgressBarForeground,
+    /* accent red as fill — #E50914 with white text (5.8:1, AA) */
+    .fab, .raised, .button-submit, .emby-button.detailFloatingButton,
+    .navMenuOption-selected, .selectionCommandsPanel, .itemProgressBarForeground,
     .countIndicator, .fullSyncIndicator, .mediaSourceIndicator, .playedIndicator,
     .alphaPickerButton-tv:focus,
     .emby-checkbox:checked + span + .checkboxOutline,
@@ -62,79 +70,78 @@ let
     .emby-select-tv-withcolor:focus {
       background-color: var(--nf-accent) !important;
     }
-
-    .button-submit:focus {
-      background-color: #f6121d !important;
+    .button-submit:focus, .emby-button.detailFloatingButton:hover,
+    .fab:focus, .raised:focus {
+      background-color: var(--nf-accent-hover) !important;
     }
-    .itemSelectionPanel {
-      border-color: var(--nf-accent) !important;
+    .itemSelectionPanel { border-color: var(--nf-accent) !important; }
+
+    /* focus visibility */
+    .emby-button.show-focus:focus,
+    .paper-icon-button-light.show-focus:focus,
+    .emby-tab-button.show-focus:focus {
+      outline: 2px solid var(--nf-text);
+      outline-offset: 1px;
     }
 
     /* inputs */
     .emby-input, .emby-textarea, .emby-select-withcolor {
-      background: #1f1f1f !important;
-      color: var(--nf-fg) !important;
+      background: var(--nf-surface-2) !important;
+      color: var(--nf-text) !important;
+      border: 1px solid var(--nf-border) !important;
       border-radius: 6px !important;
     }
     .emby-input:focus, .emby-textarea:focus, .emby-select-withcolor:focus {
-      border-color: var(--nf-accent) !important;
+      border-color: var(--nf-accent-text) !important;
+      box-shadow: 0 0 0 2px rgba(255,74,90,.35);
     }
     .emby-select-withcolor > option {
-      background: #222 !important;
+      background: var(--nf-surface-2) !important;
     }
 
     /* cards */
     .card {
-      border-radius: 8px;
+      border-radius: 10px;
       transition: transform .2s ease;
     }
-    .card:hover {
-      transform: translateY(-3px);
-    }
-    .cardBox, .cardScalable, .cardImage {
-      border-radius: 8px;
-    }
+    .card:hover { transform: translateY(-3px); }
+    .cardBox, .cardScalable, .cardImage { border-radius: 10px; }
     .visualCardBox {
-      background-color: #181818 !important;
-      border-radius: 8px !important;
+      background-color: var(--nf-surface) !important;
+      border-radius: 10px !important;
     }
     .card:focus .cardBox.visualCardBox,
     .card:focus .cardBox:not(.visualCardBox) .cardScalable {
-      border-color: var(--nf-accent) !important;
-      box-shadow: 0 0 0 2px rgba(229,9,20,.5);
-    }
-    .cardText-secondary, .secondaryText {
-      color: var(--nf-fg-dim) !important;
+      border-color: var(--nf-accent-text) !important;
+      box-shadow: 0 0 0 2px rgba(255,74,90,.45);
     }
 
-    /* panels / lists */
-    .paperList, .formDialogHeader, .formDialogFooter,
-    .collapseContent, .appfooter, .playlistSectionButton {
-      background-color: #181818 !important;
+    /* panels / overlays */
+    .paperList, .formDialogHeader, .formDialogFooter, .collapseContent,
+    .appfooter, .playlistSectionButton, .toast {
+      background-color: var(--nf-surface) !important;
+      color: var(--nf-text) !important;
     }
-    .listItem:hover { background-color: #242424 !important; }
-    .toast {
-      background: #2a2a2a !important;
-      color: var(--nf-fg) !important;
-      border-radius: 8px !important;
-    }
-
-    /* nav menu */
-    .navMenuOption {
-      color: var(--nf-fg-dim) !important;
-    }
-    .navMenuOption:hover {
-      background: #252528 !important;
+    .toast { border-radius: 8px !important; }
+    .listItem:hover, .listItem:focus, .navMenuOption:hover {
+      background-color: var(--nf-surface-2) !important;
     }
 
     /* progress */
-    .progressring-spiner { border-color: var(--nf-accent) !important; }
+    .progressring-spiner { border-color: var(--nf-accent-text) !important; }
 
     /* scrollbar */
-    ::-webkit-scrollbar-thumb:horizontal,
-    ::-webkit-scrollbar-thumb:vertical {
-      background: #3b3b3b !important;
-      border-radius: 4px !important;
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-track { background: var(--nf-bg); }
+    ::-webkit-scrollbar-thumb { background: #3A3A3A; border-radius: 5px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--nf-accent); }
+
+    /* reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .card, .emby-button, .paper-icon-button-light, .listItem, .navMenuOption {
+        transition: none !important;
+      }
+      .card:hover { transform: none !important; }
     }  '';
 
   jellyfinCssFile = pkgs.writeText "jellyfin-custom.css" jellyfinCss;
